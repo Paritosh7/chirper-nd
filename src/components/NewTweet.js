@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import { handleAddTweet } from "../actions/tweets";
 
 export function NewTweet(props) {
-  const [state, setState] = useState(() => ({ text: "" }));
+  const [state, setState] = useState(() => ({ text: "", toHome: false }));
 
-  const { text } = state;
+  const { text, toHome } = state;
   const tweetLeft = 280 - text.length;
 
   function handleChange(eve) {
@@ -19,7 +20,11 @@ export function NewTweet(props) {
     console.log("PRops are : ", props);
     dispatch(handleAddTweet(text, id));
 
-    setState({ text: "" });
+    setState({ text: "", toHome: id ? false : true });
+  }
+
+  if (toHome) {
+    return <Redirect to="/" />;
   }
 
   return (

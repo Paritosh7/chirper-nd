@@ -7,6 +7,7 @@ import {
   TiHeartFullOutline,
 } from "react-icons/ti/index";
 import { handleToggleTweet } from "../actions/tweets";
+import { Link } from "react-router-dom";
 
 function Tweet(props) {
   const { tweet, dispatch, authUser } = props;
@@ -30,11 +31,20 @@ function Tweet(props) {
 
   if (tweet === null) return <p>This tweet doesn't exist</p>;
 
-  const { name, avatar, timestamp, text, hasLiked, likes, replies, parent } =
-    tweet;
+  const {
+    id,
+    name,
+    avatar,
+    timestamp,
+    text,
+    hasLiked,
+    likes,
+    replies,
+    parent,
+  } = tweet;
 
   return (
-    <div className="tweet">
+    <Link to={`/tweet/${id}`} className="tweet">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <div className="tweet-info">
         <div>
@@ -63,7 +73,7 @@ function Tweet(props) {
           <span>{likes !== 0 && likes}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

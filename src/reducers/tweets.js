@@ -27,7 +27,7 @@ export const tweetsReducer = (state = {}, action) => {
         replyingTo = {
           [tweet.replyingTo]: {
             ...state[tweet.replyingTo],
-            replies: state[tweet.replyTo].replies.concat([tweet.id]),
+            replies: state[tweet.replyingTo].replies.concat([tweet.id]),
           },
         };
       }

@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./reducers/index";
 import middlewares from "./middlewares";
-import { NewTweet } from "./components/NewTweet";
 
 const store = createStore(reducers, middlewares);
 
