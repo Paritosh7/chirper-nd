@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
 import { handleInitialDataAction } from "../actions/shared";
 import Dashboard from "./Dashboard";
+import NewTweet from "./NewTweet";
 
 function App({ loading, dispatch }) {
   React.useEffect(() => {
@@ -11,7 +12,7 @@ function App({ loading, dispatch }) {
   return (
     <div>
       <LoadingBar />
-      {loading ? null : <Dashboard />}
+      {loading ? null : <NewTweet />}
     </div>
   );
 }

@@ -6,13 +6,22 @@ import {
   TiHeartOutline,
   TiHeartFullOutline,
 } from "react-icons/ti/index";
-
-function handleLike(e) {
-  e.preventDefault();
-}
+import { handleToggleTweet } from "../actions/tweets";
 
 function Tweet(props) {
-  const { tweet } = props;
+  const { tweet, dispatch, authUser } = props;
+  console.log(tweet);
+
+  function handleLike(e) {
+    e.preventDefault();
+    dispatch(
+      handleToggleTweet({
+        id: tweet.id,
+        hasLiked: tweet.hasLiked,
+        authUser,
+      })
+    );
+  }
 
   function toParent(e, id) {
     e.preventDefault();
